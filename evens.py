@@ -92,3 +92,11 @@ assert even_number_of_evens([1, 3, 9]) == False, "No even numbers"
 # If all the test cases pass, print some successful info to the console to let
 # the developer know
 print("All tests passed!")
+
+# Simple Function for this:
+def number_of_evens(numbers):
+    evens = 0
+    for num in numbers:
+        if num % 2 == 0:
+            evens += 1
+    return evens

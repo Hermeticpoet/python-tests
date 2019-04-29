@@ -1,10 +1,3 @@
-def number_of_evens(numbers):
-    evens = 0
-    for num in numbers:
-        if num % 2 == 0:
-            evens += 1
-    return evens
-
 def test_are_equal(actual, expected):
     """
     Test that two values are equal. Raises AssertionError if both values are
@@ -46,18 +39,5 @@ def test_between(upper_limit, lower_limit, actual):
     AssertionError if the number is not between the other two numbers
     """
     assert lower_limit <= actual <= upper_limit, "{0} is not between {1} and {2}".format(actual, lower_limit, upper_limit)
-    
-# Collection of Colors:
-colors = {"yellow", "green", "blue", "purple", "orange"}
-   
-test_are_equal(number_of_evens([1,2,3,4,5]), 2)
-test_are_equal(0,0)
-test_not_equal(number_of_evens([2,4,5,8]), 4)
-test_not_equal(number_of_evens([1,6,8,9,20,21]), 5)
-test_not_equal(2,3)
-test_is_in(colors, "purple")
-test_is_in(colors, "green")
-test_is_in(colors, "orange")
-test_not_in(colors, "white")
-test_not_in(colors, "brown")
-test_between(20, 1, 18)
+
+
