@@ -23,4 +23,4 @@ colors = {"yellow", "green", "blue", "purple", "orange"}
 test_are_equal(number_of_evens([1,2,3,4,5]), 2)
 test_not_equal(number_of_evens([2,4,5,8]), 4)
 test_is_in(colors, "purple")
-test_not_in(colors, "yellow")
+test_not_in(colors, "white")
