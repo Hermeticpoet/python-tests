@@ -1,27 +1,25 @@
-"""
 def print_message(message):
     print(message)
     
-print_message("Hello World")
-"""
+print_message("Hello World!")
 
-"""
+
 my_list = [1, 2, 3, 4, 5]
 for item in my_list:
     print(item)
-"""
+
 # import os
 
 from flask import Flask
 
 # Lottery Number Generator: 1-50 with 6 numbers
-
+"""
 def lotto_num_gen():
     numbers = []
     for number in range (1, 7):
        numbers.append(randint(1, 50))
     return numbers
-
+"""
 
 """
 import turtle
