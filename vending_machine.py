@@ -1,18 +1,37 @@
 from byotest import *
 
-usd_coins = [100, 50, 25, 10, 5, 2, 1]
-euro_coins = [100, 50, 20, 10, 5, 2, 1]
+# Create a dictionary with denomination of coin and its quantity as key, value
+usd_coins = {100: 20, 50: 20, 25: 20, 10: 20, 5: 20, 2: 20, 1: 20}
+euro_coins = {100: 20, 50: 20, 20: 20, 10: 20, 5: 20, 2: 20, 1: 20}
 
 def get_change(amount, coins=euro_coins):
-    
+    """
+    Takes the payment amount and returns the change
+    `amount` the amount of money that we need to provide change for
+    `coins` is the set of coins that we need to get change for (i.e. the set
+        of available coins)
+    Returns a list of coin values
+    """
     change = []
-    for coin in coins:
-        while coin <= amount:
-            amount -= coin
-            change.append(coin)
-            
+    """
+    Unlike a list, looping through a dictionary does not keep the order.
+    Therefore we use `sorted()` to sort the order. This will start with the
+    lowest by default, so we use `reverse=True` to start with the highest
+    denomination. The `while` ends when the domination quantity reaches 0.
+    An exception is thrown if there are insufficient coins to give change.
+    """
+    for demonination in sorted(coins.keys(), reverse=True):
+        while demonination <= amount and coins[denomination] > 0:
+            amount -= demonination
+            coins[denomination] -= 1
+            change.append(demonination)
+    
+    if amount != 0:
+        raise Exception("Insufficient coins to give change.")
+
     return change
 
+# Write our tests for our code
 test_are_equal(get_change(0), [])
 test_are_equal(get_change(1), [1])
 test_are_equal(get_change(2), [2])
