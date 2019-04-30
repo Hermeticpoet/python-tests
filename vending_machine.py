@@ -1,10 +1,13 @@
 from byotest import *
 
 # Create a dictionary with denomination of coin and its quantity as key, value
-usd_coins = {100: 20, 50: 20, 25: 20, 10: 20, 5: 20, 2: 20, 1: 20}
-euro_coins = {100: 20, 50: 20, 20: 20, 10: 20, 5: 20, 2: 20, 1: 20}
 
-def get_change(amount, coins=euro_coins):
+class denomination:
+    usd_coins = {100: 20, 50: 20, 25: 20, 10: 20, 5: 20, 2: 20, 1: 20}
+    euro_coins = {100: 20, 50: 20, 20: 20, 10: 20, 5: 20, 2: 20, 1: 20}
+
+
+def get_change(amount, denomination):
     """
     Takes the payment amount and returns the change
     `amount` the amount of money that we need to provide change for
@@ -17,7 +20,7 @@ def get_change(amount, coins=euro_coins):
     Unlike a list, looping through a dictionary does not keep the order.
     Therefore we use `sorted()` to sort the order. This will start with the
     lowest by default, so we use `reverse=True` to start with the highest
-    denomination. The `while` ends when the domination quantity reaches 0.
+    denomination. The `while` ends when the denomination quantity reaches 0.
     An exception is thrown if there are insufficient coins to give change.
     """
     for demonination in sorted(coins.keys(), reverse=True):
