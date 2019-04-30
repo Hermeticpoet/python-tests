@@ -1,13 +1,22 @@
+"""
+Solution to the first challenge in the `Walkthrough Projects: Vending 
+Machine - Part Two` unit  found in the `Test Driven Development with Python
+lesson`
+NOTE: The solution found in this file is one of the many potential solutions
+that can be used to achieve the end result expected by the challenge in the
+lesson.
+"""
+
 from byotest import *
 
 # Create a dictionary with denomination of coin and its quantity as key, value
 
-class denomination:
-    usd_coins = {100: 20, 50: 20, 25: 20, 10: 20, 5: 20, 2: 20, 1: 20}
-    euro_coins = {100: 20, 50: 20, 20: 20, 10: 20, 5: 20, 2: 20, 1: 20}
+
+usd_coins = {100: 20, 50: 20, 25: 20, 10: 20, 5: 20, 2: 20, 1: 20}
+euro_coins = {100: 20, 50: 20, 20: 20, 10: 20, 5: 20, 2: 20, 1: 20}
 
 
-def get_change(amount, denomination):
+def get_change(amount, coins=euro_coins):
     """
     Takes the payment amount and returns the change
     `amount` the amount of money that we need to provide change for
@@ -23,11 +32,11 @@ def get_change(amount, denomination):
     denomination. The `while` ends when the denomination quantity reaches 0.
     An exception is thrown if there are insufficient coins to give change.
     """
-    for demonination in sorted(coins.keys(), reverse=True):
-        while demonination <= amount and coins[denomination] > 0:
-            amount -= demonination
+    for denomination in sorted(coins.keys(), reverse=True):
+        while denomination <= amount and coins[denomination] > 0:
+            amount -= denomination
             coins[denomination] -= 1
-            change.append(demonination)
+            change.append(denomination)
     
     if amount != 0:
         raise Exception("Insufficient coins to give change.")
@@ -47,5 +56,7 @@ test_are_equal(get_change(3), [2, 1])
 test_are_equal(get_change(7), [5, 2])
 test_are_equal(get_change(9), [5, 2, 2])
 test_are_equal(get_change(35, usd_coins), [25, 10])
+test_are_equal(get_change(5, {2: 1, 1: 4}), [2, 1, 1, 1])
+test_exception_was_raised(get_change, (5, {2: 1, 1: 2}), "Insufficient coins to give change.")
 
 print("All tests passed")
